@@ -1,10 +1,14 @@
 import React from 'react'
-import Modal from '@/components/Modal.jsx'
+import Product from '@/components/Product.jsx'
+import { useParams } from "react-router-dom";
 
 const ProductDetails = () => {
+
+    const { id } = useParams();
+
     return (
         <>
-            <Modal />
+            <Product id={id} />
         </>
     )
 }

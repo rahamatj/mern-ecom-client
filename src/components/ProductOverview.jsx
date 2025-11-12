@@ -14,10 +14,11 @@ const ProductOverview = () => {
 
     const API_URL = clientConfig().API_URL;
 
-    async function fetchProducts() {
+    function fetchProducts() {
         setLoadingProductOverview(true);
         fetch(`${API_URL}/api/products/paginate?page=${page}&limit=${limit}`)
             .then(res => {
+                // console.log(res);
                 return res.json()
             })
             .then(products => {
