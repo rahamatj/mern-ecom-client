@@ -18,10 +18,10 @@ const ProductOverview = () => {
         setLoadingProductOverview(true);
         fetch(`${API_URL}/api/products/paginate?page=${page}&limit=${limit}`)
             .then(res => {
-                console.log(res);
                 return res.json()
             })
             .then(products => {
+                console.log(products);
                 setProducts(products)
                 setPage(page + 1)
             })
