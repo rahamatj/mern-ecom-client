@@ -3,6 +3,7 @@ import clientConfig from "@/utils/client.config.js"
 import Loader from "@/components/Loader.jsx";
 import ProductDetails from "@/pages/ProductDetails.jsx";
 import Select from 'react-select';
+import { useCartStore } from "@/store/useCartStore";
 
 const sizes = [
     { value: "S", label: "S" },
@@ -20,6 +21,8 @@ const colors = [
 
 const Product = ({id}) => {
 
+    const addToCart = useCartStore((state) => state.addToCart);
+
     const API_URL = clientConfig().API_URL;
 
     const [product, setProduct] = useState({});
@@ -28,6 +31,7 @@ const Product = ({id}) => {
     const [productCount, setProductCount] = React.useState(1);
     const [selectedSize, setSelectedSize] = useState(null);
     const [selectedColor, setSelectedColor] = useState(null);
+    const [cart, setCart] = useState([]);
 
     function fetchProduct(id) {
         setLoading(true);
@@ -51,17 +55,33 @@ const Product = ({id}) => {
         setProductCount(prevCount => {
             const newCount = prevCount + 1;
             setTotalPrice(newCount * product.price);
-            console.log(newCount);
             return newCount;
         });
     }
 
     function decrement() {
         setProductCount(prevCount => {
-            const newCount = prevCount - 1;
-            setTotalPrice(newCount * product.price);
-            console.log(newCount);
-            return newCount;
+            if (prevCount > 1) {
+                const newCount = prevCount - 1;
+                setTotalPrice(newCount * product.price);
+                return newCount;
+            }
+
+            return 1;
+        });
+    }
+
+    function addToCart2() {
+        setCart(prevCart => {
+            product.size = selectedSize ? selectedSize.value : "S";
+            product.color = selectedColor ? selectedColor.value : "Red";
+            product.quantity = productCount;
+
+            const newCart = [...prevCart, product];
+
+            localStorage.setItem("cart", JSON.stringify(newCart));
+
+            return newCart;
         });
     }
 
@@ -180,6 +200,7 @@ const Product = ({id}) => {
                                                 </div>
 
                                                 <button
+                                                    onClick={addToCart}
                                                     className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                                     Add to cart
                                                 </button>

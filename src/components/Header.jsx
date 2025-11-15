@@ -1,7 +1,18 @@
 import React from 'react'
-// import { Link } from "react-router-dom";
+import { useCartStore } from "@/store/useCartStore.js";
 
 const Header = () => {
+    // const cartString = localStorage.getItem("cart")
+    //
+    // let cartCount = 0;
+    //
+    // if (cartString) {
+    //     let cartJson = JSON.parse(cartString);
+    //     cartCount = cartJson.length;
+    // }
+
+    const cartCount = useCartStore((state) => state.cartCount());
+
     return (
         <>
             <header>
@@ -80,15 +91,9 @@ const Header = () => {
 
                                 <div
                                     className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                                    data-notify="2">
+                                    data-notify={cartCount}>
                                     <i className="zmdi zmdi-shopping-cart"></i>
                                 </div>
-
-                                <a href="#"
-                                   className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                                   data-notify="0">
-                                    <i className="zmdi zmdi-favorite-outline"></i>
-                                </a>
                             </div>
                         </nav>
                     </div>
@@ -106,15 +111,9 @@ const Header = () => {
 
                         <div
                             className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-                            data-notify="2">
+                            data-notify={cartCount}>
                             <i className="zmdi zmdi-shopping-cart"></i>
                         </div>
-
-                        <a href="#"
-                           className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-                           data-notify="0">
-                            <i className="zmdi zmdi-favorite-outline"></i>
-                        </a>
                     </div>
 
                     <div className="btn-show-menu-mobile hamburger hamburger--squeeze">

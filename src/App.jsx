@@ -19,7 +19,7 @@ function App() {
 
     return (
         <>
-            <Header />
+            <Header handleAddToCart />
             <RouterProvider router={router} />
             <Footer />
         </>
