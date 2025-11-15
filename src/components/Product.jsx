@@ -139,7 +139,7 @@ const Product = ({id}) => {
                                     </h4>
 
                                     <span className="mtext-106 cl2">
-							${ totalPrice }
+							$ { totalPrice }
 						</span>
 
                                     <p className="stext-102 cl3 p-t-23">
