@@ -140,7 +140,7 @@ const ProductOverview = () => {
                     <div className="container">
                         <div className="p-b-10">
                             <h3 className="ltext-103 cl5">
-                                Product Overview 2
+                                Product Overview
                             </h3>
                         </div>
 
