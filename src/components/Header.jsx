@@ -1,17 +1,15 @@
-import React from 'react'
-import { useCartStore } from "@/store/useCartStore.js";
+import React, {useState} from 'react'
+import {useCartStore} from "@/store/useCartStore.js";
 
 const Header = () => {
-    // const cartString = localStorage.getItem("cart")
-    //
+    // let cartCountFromLocalStorage = localStorage.getItem("cartCount");
     // let cartCount = 0;
-    //
-    // if (cartString) {
-    //     let cartJson = JSON.parse(cartString);
-    //     cartCount = cartJson.length;
-    // }
 
     const cartCount = useCartStore((state) => state.cartCount());
+
+    // if (cartCountFromLocalStorage) {
+    //     cartCount = localStorage.getItem("cartCount");
+    // }
 
     return (
         <>

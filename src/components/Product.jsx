@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import clientConfig from "@/utils/client.config.js"
 import Loader from "@/components/Loader.jsx";
 import ProductDetails from "@/pages/ProductDetails.jsx";
 import Select from 'react-select';
@@ -32,6 +31,14 @@ const Product = ({id}) => {
     const [selectedColor, setSelectedColor] = useState(null);
     const [cart, setCart] = useState([]);
     const [price, setPrice] = useState(0);
+
+    function handleAddToCart() {
+        addToCart(product);
+
+        // if (cartCount) {
+        //     localStorage.setItem("cartCount", cartCount);
+        // }
+    }
 
     function fetchProduct(id) {
         setLoading(true);
@@ -186,7 +193,7 @@ const Product = ({id}) => {
                                                 </div>
 
                                                 <button
-                                                    onClick={addToCart}
+                                                    onClick={handleAddToCart}
                                                     className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                                     Add to cart
                                                 </button>

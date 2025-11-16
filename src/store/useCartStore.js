@@ -1,20 +1,44 @@
-import { create } from "zustand";
+import {create} from "zustand";
+import {persist} from "zustand/middleware";
 
-export const useCartStore = create((set, get) => ({
-    cart: [],
+export const useCartStore = create(
+    persist((set, get) => ({
+        cart: [],
 
-    // Computed value: total cart count
-    cartCount: () => get().cart.length,
+        // Add item
+        addToCart: (product) => {
+            set((state) => ({cart: [...state.cart, product]}))
+        },
 
-    addToCart: (product) =>
-        set((state) => ({
-            cart: [...state.cart, product],
-        })),
+        // Remove item
+        removeFromCart: (id) =>
+            set((state) => ({
+                cart: state.cart.filter((item) => item.id !== id),
+            })),
 
-    removeFromCart: (id) =>
-        set((state) => ({
-            cart: state.cart.filter((item) => item.id !== id),
-        })),
+        // Getter: NOT persisted, recomputed each time
+        cartCount: () => get().cart.length,
+    }))
+);
 
-    clearCart: () => set({ cart: [] }),
-}));
+/**
+export const useCartStore = create(
+    (set, get) => ({
+        cart: [],
+
+        // Add item
+        addToCart: (product) => {
+            set((state) => ({cart: [...state.cart, product]}))
+        },
+
+        // Remove item
+        removeFromCart: (id) =>
+            set((state) => ({
+                cart: state.cart.filter((item) => item.id !== id),
+            })),
+
+        // Getter: NOT persisted, recomputed each time
+        cartCount: () => get().cart.length,
+    })
+);
+*/
