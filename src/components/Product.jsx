@@ -32,6 +32,7 @@ const Product = ({id}) => {
     const [selectedSize, setSelectedSize] = useState(null);
     const [selectedColor, setSelectedColor] = useState(null);
     const [cart, setCart] = useState([]);
+    const [price, setPrice] = useState(0);
 
     function fetchProduct(id) {
         setLoading(true);
@@ -41,7 +42,8 @@ const Product = ({id}) => {
             })
             .then(product => {
                 setProduct(product)
-                setTotalPrice(Number(product.price))
+                // setPrice(product.price);
+                setTotalPrice(productCount * product.price);
             })
             .catch(err => console.error(err))
             .finally(() => setLoading(false));
@@ -71,19 +73,19 @@ const Product = ({id}) => {
         });
     }
 
-    function addToCart2() {
-        setCart(prevCart => {
-            product.size = selectedSize ? selectedSize.value : "S";
-            product.color = selectedColor ? selectedColor.value : "Red";
-            product.quantity = productCount;
-
-            const newCart = [...prevCart, product];
-
-            localStorage.setItem("cart", JSON.stringify(newCart));
-
-            return newCart;
-        });
-    }
+    // function addToCart2() {
+    //     setCart(prevCart => {
+    //         product.size = selectedSize ? selectedSize.value : "S";
+    //         product.color = selectedColor ? selectedColor.value : "Red";
+    //         product.quantity = productCount;
+    //
+    //         const newCart = [...prevCart, product];
+    //
+    //         localStorage.setItem("cart", JSON.stringify(newCart));
+    //
+    //         return newCart;
+    //     });
+    // }
 
     return (
         <>
