@@ -20,10 +20,9 @@ const colors = [
 ]
 
 const Product = ({id}) => {
+    const API_URL = "http://72.60.219.158:3001";
 
     const addToCart = useCartStore((state) => state.addToCart);
-
-    const API_URL = clientConfig().API_URL;
 
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
