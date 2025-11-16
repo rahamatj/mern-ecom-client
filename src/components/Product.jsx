@@ -73,20 +73,6 @@ const Product = ({id}) => {
         });
     }
 
-    // function addToCart2() {
-    //     setCart(prevCart => {
-    //         product.size = selectedSize ? selectedSize.value : "S";
-    //         product.color = selectedColor ? selectedColor.value : "Red";
-    //         product.quantity = productCount;
-    //
-    //         const newCart = [...prevCart, product];
-    //
-    //         localStorage.setItem("cart", JSON.stringify(newCart));
-    //
-    //         return newCart;
-    //     });
-    // }
-
     return (
         <>
             {loading &&
