@@ -42,8 +42,6 @@ const Product = ({id}) => {
             .then(product => {
                 setProduct(product)
                 setTotalPrice(productCount * product.price);
-
-                console.log(product);
             })
             .catch(err => console.error(err))
             .finally(() => setLoading(false));
