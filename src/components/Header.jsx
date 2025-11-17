@@ -1,15 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {useCartStore} from "@/store/useCartStore.js";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-    // let cartCountFromLocalStorage = localStorage.getItem("cartCount");
-    // let cartCount = 0;
 
     const cartCount = useCartStore((state) => state.cartCount());
-
-    // if (cartCountFromLocalStorage) {
-    //     cartCount = localStorage.getItem("cartCount");
-    // }
 
     return (
         <>
@@ -82,16 +77,14 @@ const Header = () => {
                             </div>
 
                             <div className="wrap-icon-header flex-w flex-r-m">
-                                <div
-                                    className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-                                    <i className="zmdi zmdi-search"></i>
-                                </div>
+                                <Link to="/cart">
+                                    <span
+                                        className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                                        data-notify={cartCount}>
 
-                                <div
-                                    className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                                    data-notify={cartCount}>
-                                    <i className="zmdi zmdi-shopping-cart"></i>
-                                </div>
+                                            <i className="zmdi zmdi-shopping-cart"></i>
+                                    </span>
+                                </Link>
                             </div>
                         </nav>
                     </div>

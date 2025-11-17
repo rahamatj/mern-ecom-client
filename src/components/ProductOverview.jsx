@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import clientConfig from "@/utils/client.config.js";
 
 const ProductOverview = () => {
     const [showFilters, setShowFilters] = React.useState(false);

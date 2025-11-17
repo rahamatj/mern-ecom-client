@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import Loader from "@/components/Loader.jsx";
-import ProductDetails from "@/pages/ProductDetails.jsx";
 import Select from 'react-select';
 import { useCartStore } from "@/store/useCartStore";
 
@@ -33,11 +31,12 @@ const Product = ({id}) => {
     const [price, setPrice] = useState(0);
 
     function handleAddToCart() {
-        addToCart(product);
+        product.size = selectedSize;
+        product.color = selectedColor;
+        product.qty = productCount;
+        product.totalPrice = totalPrice;
 
-        // if (cartCount) {
-        //     localStorage.setItem("cartCount", cartCount);
-        // }
+        addToCart(product);
     }
 
     function fetchProduct(id) {
@@ -199,34 +198,6 @@ const Product = ({id}) => {
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div className="flex-w flex-m p-l-100 p-t-40 respon7">
-                                        <div className="flex-m bor9 p-r-10 m-r-11">
-                                            <a href="#"
-                                               className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                                               data-tooltip="Add to Wishlist">
-                                                <i className="zmdi zmdi-favorite"></i>
-                                            </a>
-                                        </div>
-
-                                        <a href="#"
-                                           className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                                           data-tooltip="Facebook">
-                                            <i className="fa fa-facebook"></i>
-                                        </a>
-
-                                        <a href="#"
-                                           className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                                           data-tooltip="Twitter">
-                                            <i className="fa fa-twitter"></i>
-                                        </a>
-
-                                        <a href="#"
-                                           className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                                           data-tooltip="Google Plus">
-                                            <i className="fa fa-google-plus"></i>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
