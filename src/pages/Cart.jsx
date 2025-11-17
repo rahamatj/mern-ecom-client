@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { useCartStore } from "@/store/useCartStore.js";
 
 const Cart = () => {
@@ -8,15 +8,6 @@ const Cart = () => {
     const handleProductIncrement = useCartStore(state => state.handleProductIncrement);
     const totalPriceOfProduct = useCartStore(state => state.totalPriceOfProduct);
     const removeFromCart = useCartStore(state => state.removeFromCart);
-
-    // const handleProductIncrement = (product, index) => {
-    //     product[index].qty = product[index].qty - 1;
-    //     console.log(product[index].qty);
-    // }
-
-    useEffect(() => {
-
-    }, []);
 
     return (
         <>

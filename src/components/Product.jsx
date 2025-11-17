@@ -30,11 +30,15 @@ const Product = ({id}) => {
     const [cart, setCart] = useState([]);
     const [price, setPrice] = useState(0);
 
+    const [isAddedToCart, setIsAddedToCart] = useState(false);
+
     function handleAddToCart() {
         product.size = selectedSize;
         product.color = selectedColor;
         product.qty = productCount;
         product.totalPrice = totalPrice;
+
+        setIsAddedToCart(true);
 
         addToCart(product);
     }
@@ -193,8 +197,11 @@ const Product = ({id}) => {
 
                                                 <button
                                                     onClick={handleAddToCart}
-                                                    className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                                    Add to cart
+                                                    className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
+                                                    disabled={isAddedToCart}
+                                                >
+                                                    {isAddedToCart ? "Added" : "Add to cart"}
+
                                                 </button>
                                             </div>
                                         </div>
