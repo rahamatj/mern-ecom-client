@@ -12,9 +12,12 @@ const ProductOverview = () => {
     const [page, setPage] = React.useState(1);
     const [limit, setLimit] = React.useState(16);
 
-    const API_URL = process.env.API_URL || "http://localhost:3001";
+    const API_URL = process.env.API_URL;
 
     function fetchProducts() {
+        console.log("fetching products...");
+        console.log(`API_URL: ${API_URL}`);
+
         fetch(`${API_URL}/api/products/paginate?page=${page}&limit=${limit}`)
             .then(res => {
                 return res.json();
