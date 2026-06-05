@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import React from 'react';
 import { Link } from "react-router-dom";
 
@@ -12,11 +11,9 @@ const ProductOverview = () => {
     const [page, setPage] = React.useState(1);
     const [limit, setLimit] = React.useState(16);
 
-    const API_URL = process.env.API_URL;
+    const API_URL = import.meta.env.VITE_API_URL;
 
     function fetchProducts() {
-        console.log("fetching products...");
-        console.log(`API_URL: ${API_URL}`);
 
         fetch(`${API_URL}/api/products/paginate?page=${page}&limit=${limit}`)
             .then(res => {

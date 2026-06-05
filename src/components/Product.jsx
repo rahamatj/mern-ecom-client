@@ -1,5 +1,4 @@
 import { useCartStore } from "@/store/useCartStore";
-import 'dotenv/config';
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 
@@ -18,7 +17,7 @@ const colors = [
 ]
 
 const Product = ({ id }) => {
-    const API_URL = process.env.API_URL || "http://localhost:3001";
+    const API_URL = process.env.API_URL;
 
     const addToCart = useCartStore((state) => state.addToCart);
 
