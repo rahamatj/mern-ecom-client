@@ -1,5 +1,5 @@
-import React from 'react'
-import {useCartStore} from "@/store/useCartStore.js";
+import logo_01 from "@/assets/images/icons/logo-01.png";
+import { useCartStore } from "@/store/useCartStore.js";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -40,7 +40,7 @@ const Header = () => {
                         <nav className="limiter-menu-desktop container">
 
                             <a href="/" className="logo">
-                                <img src="/frontend/images/icons/logo-01.png" alt="IMG-LOGO"/>
+                                <img src="/frontend/images/icons/logo-01.png" alt="IMG-LOGO" />
                             </a>
 
                             <div className="menu-desktop">
@@ -82,7 +82,7 @@ const Header = () => {
                                         className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
                                         data-notify={cartCount}>
 
-                                            <i className="zmdi zmdi-shopping-cart"></i>
+                                        <i className="zmdi zmdi-shopping-cart"></i>
                                     </span>
                                 </Link>
                             </div>
@@ -92,7 +92,7 @@ const Header = () => {
 
                 <div className="wrap-header-mobile">
                     <div className="logo-mobile">
-                        <a href="index-2.html"><img src="/frontend/images/icons/logo-01.png" alt="IMG-LOGO"/></a>
+                        <a href="index-2.html"><img src={logo_01} alt="IMG-LOGO" /></a>
                     </div>
 
                     <div className="wrap-icon-header flex-w flex-r-m m-r-15">
@@ -108,9 +108,9 @@ const Header = () => {
                     </div>
 
                     <div className="btn-show-menu-mobile hamburger hamburger--squeeze">
-				<span className="hamburger-box">
-					<span className="hamburger-inner"></span>
-				</span>
+                        <span className="hamburger-box">
+                            <span className="hamburger-inner"></span>
+                        </span>
                     </div>
                 </div>
 
@@ -153,8 +153,8 @@ const Header = () => {
                                 <li><a href="home-03.html">Homepage 3</a></li>
                             </ul>
                             <span className="arrow-main-menu-m">
-						<i className="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
+                                <i className="fa fa-angle-right" aria-hidden="true"></i>
+                            </span>
                         </li>
 
                         <li>
@@ -182,14 +182,14 @@ const Header = () => {
                 <div className="modal-search-header flex-c-m trans-04 js-hide-modal-search">
                     <div className="container-search-header">
                         <button className="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-                            <img src="images/icons/icon-close2.png" alt="CLOSE"/>
+                            <img src="images/icons/icon-close2.png" alt="CLOSE" />
                         </button>
 
                         <form className="wrap-search-header flex-w p-l-15">
                             <button className="flex-c-m trans-04">
                                 <i className="zmdi zmdi-search"></i>
                             </button>
-                            <input className="plh3" type="text" name="search" placeholder="Search..."/>
+                            <input className="plh3" type="text" name="search" placeholder="Search..." />
                         </form>
                     </div>
                 </div>

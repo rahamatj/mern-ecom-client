@@ -1,6 +1,5 @@
 import { useCartStore } from "@/store/useCartStore";
 import React, { useEffect, useState } from 'react';
-import Select from 'react-select';
 
 const sizes = [
     { value: "S", label: "S" },
@@ -17,7 +16,7 @@ const colors = [
 ]
 
 const Product = ({ id }) => {
-    const API_URL = process.env.API_URL;
+    const API_URL = import.meta.env.VITE_API_URL;
 
     const addToCart = useCartStore((state) => state.addToCart);
 
@@ -113,12 +112,12 @@ const Product = ({ id }) => {
                                         <div className="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                                         <div className="slick3 gallery-lb">
-                                            <div className="item-slick3" data-thumb="images/product-detail-01.jpg">
+                                            <div className="item-slick3" data-thumb={product.image}>
                                                 <div className="wrap-pic-w pos-relative">
-                                                    <img src="/frontend/images/product-detail-01.jpg" alt="IMG-PRODUCT" />
+                                                    <img src={product.image} alt="IMG-PRODUCT" />
 
                                                     <a className="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                        href="/frontend/images/product-detail-01.jpg">
+                                                        href={product.image}>
                                                         <i className="fa fa-expand"></i>
                                                     </a>
                                                 </div>
@@ -144,38 +143,6 @@ const Product = ({ id }) => {
                                     </p>
 
                                     <div className="p-t-33">
-                                        <div className="flex-w flex-r-m p-b-10">
-                                            <div className="size-203 flex-c-m respon6">
-                                                Size
-                                            </div>
-
-                                            <div className="size-204 respon6-next">
-                                                <div className="rs1-select2 bor8 bg0">
-                                                    <Select
-                                                        defaultValue={selectedSize}
-                                                        onChange={setSelectedSize}
-                                                        options={sizes}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex-w flex-r-m p-b-10">
-                                            <div className="size-203 flex-c-m respon6">
-                                                Color
-                                            </div>
-
-                                            <div className="size-204 respon6-next">
-                                                <div className="rs1-select2 bor8 bg0">
-                                                    <Select
-                                                        defaultValue={selectedColor}
-                                                        onChange={setSelectedColor}
-                                                        options={colors}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div className="flex-w flex-r-m p-b-10">
                                             <div className="size-204 flex-w flex-m respon6-next">
                                                 <div className="wrap-num-product flex-w m-r-20 m-tb-10">
