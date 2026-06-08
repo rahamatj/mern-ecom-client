@@ -15,63 +15,24 @@ const Header = () => {
                             <div className="left-top-bar">
                                 Free shipping for standard order over $100
                             </div>
-
-                            <div className="right-top-bar flex-w h-full">
-                                <a href="#" className="flex-c-m trans-04 p-lr-25">
-                                    Help & FAQs
-                                </a>
-
-                                <a href="#" className="flex-c-m trans-04 p-lr-25">
-                                    My Account
-                                </a>
-
-                                <a href="#" className="flex-c-m trans-04 p-lr-25">
-                                    EN
-                                </a>
-
-                                <a href="#" className="flex-c-m trans-04 p-lr-25">
-                                    USD
-                                </a>
-                            </div>
                         </div>
                     </div>
 
                     <div className="wrap-menu-desktop">
                         <nav className="limiter-menu-desktop container">
 
-                            <a href="/" className="logo">
+                            <Link to="/" className="logo">
                                 <img src="/frontend/images/icons/logo-01.png" alt="IMG-LOGO" />
-                            </a>
+                            </Link>
 
                             <div className="menu-desktop">
                                 <ul className="main-menu">
                                     <li className="active-menu">
-                                        <a href="index-2.html">Home</a>
-                                        <ul className="sub-menu">
-                                            <li><a href="index-2.html">Homepage 1</a></li>
-                                            <li><a href="home-02.html">Homepage 2</a></li>
-                                            <li><a href="home-03.html">Homepage 3</a></li>
-                                        </ul>
+                                        <Link to="/">Home</Link>
                                     </li>
 
                                     <li>
-                                        <a href="product.html">Shop</a>
-                                    </li>
-
-                                    <li className="label1" data-label1="hot">
-                                        <a href="shoping-cart.html">Features</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="blog.html">Blog</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="about.html">About</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="contact.html">Contact</a>
+                                        <Link to="/shop">Shop</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -123,58 +84,18 @@ const Header = () => {
                             </div>
                         </li>
 
-                        <li>
-                            <div className="right-top-bar flex-w h-full">
-                                <a href="#" className="flex-c-m p-lr-10 trans-04">
-                                    Help & FAQs
-                                </a>
-
-                                <a href="#" className="flex-c-m p-lr-10 trans-04">
-                                    My Account
-                                </a>
-
-                                <a href="#" className="flex-c-m p-lr-10 trans-04">
-                                    EN
-                                </a>
-
-                                <a href="#" className="flex-c-m p-lr-10 trans-04">
-                                    USD
-                                </a>
-                            </div>
-                        </li>
                     </ul>
 
                     <ul className="main-menu-m">
                         <li>
-                            <a href="index-2.html">Home</a>
-                            <ul className="sub-menu-m">
-                                <li><a href="index-2.html">Homepage 1</a></li>
-                                <li><a href="home-02.html">Homepage 2</a></li>
-                                <li><a href="home-03.html">Homepage 3</a></li>
-                            </ul>
+                            <Link to="/">Home</Link>
                             <span className="arrow-main-menu-m">
                                 <i className="fa fa-angle-right" aria-hidden="true"></i>
                             </span>
                         </li>
 
                         <li>
-                            <a href="product.html">Shop</a>
-                        </li>
-
-                        <li>
-                            <a href="shoping-cart.html" className="label1 rs1" data-label1="hot">Features</a>
-                        </li>
-
-                        <li>
-                            <a href="blog.html">Blog</a>
-                        </li>
-
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
-
-                        <li>
-                            <a href="contact.html">Contact</a>
+                            <Link to="/shop">Shop</Link>
                         </li>
                     </ul>
                 </div>

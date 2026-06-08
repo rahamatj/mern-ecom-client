@@ -137,11 +137,6 @@ const ProductOverview = () => {
             {
                 (<section className="bg0 p-t-23 p-b-140">
                     <div className="container">
-                        <div className="p-b-10">
-                            <h3 className="ltext-103 cl5">
-                                Product Overview
-                            </h3>
-                        </div>
 
                         <div className="flex justify-end p-b-52">
                             <div className="flex-w flex-c-m m-tb-10">
