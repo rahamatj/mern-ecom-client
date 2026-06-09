@@ -53,25 +53,17 @@ const Header = () => {
 
                 <div className="wrap-header-mobile">
                     <div className="logo-mobile">
-                        <a href="index-2.html"><img src={logo_01} alt="IMG-LOGO" /></a>
+                        <Link to="/"> <img src={logo_01} alt="IMG-LOGO" /></Link>
                     </div>
 
                     <div className="wrap-icon-header flex-w flex-r-m m-r-15">
-                        <div className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-                            <i className="zmdi zmdi-search"></i>
-                        </div>
-
-                        <div
-                            className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-                            data-notify={cartCount}>
-                            <i className="zmdi zmdi-shopping-cart"></i>
-                        </div>
-                    </div>
-
-                    <div className="btn-show-menu-mobile hamburger hamburger--squeeze">
-                        <span className="hamburger-box">
-                            <span className="hamburger-inner"></span>
-                        </span>
+                        <Link to="/cart">
+                            <span
+                                className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+                                data-notify={cartCount}>
+                                <i className="zmdi zmdi-shopping-cart"></i>
+                            </span>
+                        </Link>
                     </div>
                 </div>
 

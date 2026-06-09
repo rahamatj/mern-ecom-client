@@ -15,6 +15,9 @@ const Cart = () => {
             subtotal += totalPriceOfProduct(product._id);
         });
 
+        subtotal = parseFloat(subtotal);
+        subtotal = Math.round(subtotal * 100) / 100;
+
         return (+subtotal).toFixed(2);
     };
 
