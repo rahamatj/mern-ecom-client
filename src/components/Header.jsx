@@ -1,10 +1,18 @@
 import logo_01 from "@/assets/images/icons/logo-01.png";
 import { useCartStore } from "@/store/useCartStore.js";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
 
     const cartCount = useCartStore((state) => state.cartCount());
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+    const toggleMobileMenu = () => {
+        console.log("Toggling mobile menu");
+        console.log(showMobileMenu);
+        setShowMobileMenu(!showMobileMenu);
+    }
 
     return (
         <>
@@ -53,31 +61,33 @@ const Header = () => {
 
                 <div className="wrap-header-mobile">
                     <div className="logo-mobile">
-                        <Link to="/"> <img src={logo_01} alt="IMG-LOGO" /></Link>
+                        {/* <Link to="/"><img src="images/icons/logo-01.png" alt="IMG-LOGO" /></Link> */}
                     </div>
 
                     <div className="wrap-icon-header flex-w flex-r-m m-r-15">
                         <Link to="/cart">
-                            <span
-                                className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-                                data-notify={cartCount}>
+                            <div className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify={cartCount}>
                                 <i className="zmdi zmdi-shopping-cart"></i>
-                            </span>
+                            </div>
                         </Link>
+                    </div>
+
+                    <div onClick={toggleMobileMenu} className={`btn-show-menu-mobile hamburger hamburger--squeeze ${showMobileMenu ? 'is-active' : ''}`}>
+                        <span className="hamburger-box">
+                            <span className="hamburger-inner"></span>
+                        </span>
                     </div>
                 </div>
 
+                <div className="wrap-header-mobile">
+                    <div className="logo-mobile">
+                        <Link to="/"> <img src={logo_01} alt="IMG-LOGO" /></Link>
+                    </div>
 
-                <div className="menu-mobile">
-                    <ul className="topbar-mobile">
-                        <li>
-                            <div className="left-top-bar">
-                                Free shipping for standard order over $100
-                            </div>
-                        </li>
+                </div>
 
-                    </ul>
 
+                <div className="menu-mobile" style={{ display: showMobileMenu ? 'block' : 'none' }}>
                     <ul className="main-menu-m">
                         <li>
                             <Link to="/">Home</Link>
@@ -97,13 +107,6 @@ const Header = () => {
                         <button className="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
                             <img src="images/icons/icon-close2.png" alt="CLOSE" />
                         </button>
-
-                        <form className="wrap-search-header flex-w p-l-15">
-                            <button className="flex-c-m trans-04">
-                                <i className="zmdi zmdi-search"></i>
-                            </button>
-                            <input className="plh3" type="text" name="search" placeholder="Search..." />
-                        </form>
                     </div>
                 </div>
             </header>
