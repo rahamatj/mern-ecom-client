@@ -91,9 +91,6 @@ const Header = () => {
                     <ul className="main-menu-m">
                         <li>
                             <Link to="/">Home</Link>
-                            <span className="arrow-main-menu-m">
-                                <i className="fa fa-angle-right" aria-hidden="true"></i>
-                            </span>
                         </li>
 
                         <li>
