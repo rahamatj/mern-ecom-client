@@ -17,13 +17,12 @@ const ProductOverview = () => {
         try {
             const response = await fetch(`${API_URL}/api/products/paginate?page=${page}&limit=${limit}`);
             const data = await response.json();
-            // Assuming the API returns an array of products directly. Adjust if it returns {products: [...]}
+
             if (initial) {
                 setProducts(data);
             } else {
                 setProducts(prev => [...prev, ...data]);
             }
-            // Update page for next fetch using functional update to avoid stale closure
             setPage(prev => prev + 1);
         } catch (err) {
             console.error(err);
