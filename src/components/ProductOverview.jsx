@@ -13,19 +13,23 @@ const ProductOverview = () => {
 
     const API_URL = import.meta.env.VITE_API_URL;
 
-    function fetchProducts() {
-
-        fetch(`${API_URL}/api/products/paginate?page=${page}&limit=${limit}`)
-            .then(res => {
-                return res.json();
-            })
-            .then(products => {
-                console.log(products);
-                setProducts(products)
-                setPage(page + 1)
-            })
-            .catch(err => console.error(err))
-            .finally(() => setLoadingProductOverview(false));
+    async function fetchProducts(initial = true) {
+        try {
+            const response = await fetch(`${API_URL}/api/products/paginate?page=${page}&limit=${limit}`);
+            const data = await response.json();
+            // Assuming the API returns an array of products directly. Adjust if it returns {products: [...]}
+            if (initial) {
+                setProducts(data);
+            } else {
+                setProducts(prev => [...prev, ...data]);
+            }
+            // Update page for next fetch using functional update to avoid stale closure
+            setPage(prev => prev + 1);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoadingProductOverview(false);
+        }
     }
 
     React.useEffect(() => {
@@ -118,18 +122,19 @@ const ProductOverview = () => {
             .finally(() => setLoadingProductOverview(false));
     };
 
-    const handleLoadMore = (e) => {
-        e.preventDefault()
-
-        setLoadMore(true)
-        fetch(`${API_URL}/api/products/paginate?page=${page}&limit=${limit}`)
-            .then(response => response.json())
-            .then(data => {
-                setProducts(data)
-                setPage(page + 1)
-            })
-            .catch(error => console.error('Error fetching products:', error))
-            .finally(() => setLoadMore(false));
+    const handleLoadMore = async (e) => {
+        e.preventDefault();
+        setLoadMore(true);
+        try {
+            const response = await fetch(`${API_URL}/api/products/paginate?page=${page}&limit=${limit}`);
+            const data = await response.json();
+            setProducts(prev => [...prev, ...data]);
+            setPage(prev => prev + 1);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        } finally {
+            setLoadMore(false);
+        }
     };
 
     return (
