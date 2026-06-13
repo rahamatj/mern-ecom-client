@@ -4,9 +4,9 @@ import Checkout from "@/pages/Checkout.jsx";
 import Home from "@/pages/Home.jsx";
 import ProductDetails from "@/pages/ProductDetails.jsx";
 import Shop from "@/pages/Shop.jsx";
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <MainLayout />,
